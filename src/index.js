@@ -3,12 +3,13 @@ import fs from 'fs';
 
 const encoding = 'utf-8';
 
-function extraiLinks(texto) {
+function ExtrairLinks(texto)
+{
     const regex = /\[([^[\]]*?)\]\((https?:\/\/[^\s?#.].[^\s]*)\)/gm;
     const capturas = [...texto.matchAll(regex)];
     const resultados = capturas.map(captura => ({[captura[1]]: captura[2]}))
     return resultados;
-  }
+}
 
 function trataErro(erro)
 {
@@ -27,7 +28,7 @@ async function pegaArquivo(caminhoArquivo)
 {   try
     {
         const texto = await fs.promises.readFile(caminhoArquivo, encoding)
-        console.log(extraiLinks(texto));
+        return (ExtrairLinks(texto));
     }
     catch(erro)
     {
@@ -62,4 +63,4 @@ async function pegaArquivo(caminhoArquivo)
             })
         }
 }*/
-pegaArquivo('./arquivos/texto.md');
+export default pegaArquivo;
