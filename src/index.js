@@ -7,8 +7,8 @@ function ExtrairLinks(texto)
 {
     const regex = /\[([^[\]]*?)\]\((https?:\/\/[^\s?#.].[^\s]*)\)/gm;
     const capturas = [...texto.matchAll(regex)];
-    const resultados = capturas.map(captura => ({[captura[1]]: captura[2]}))
-    return resultados;
+    const resultados = capturas.map(captura => ({[captura[1]]: captura[2]}));
+    return resultados.length !== 0 ? resultados: " Nao ha links no arquivo";
 }
 
 function trataErro(erro)
@@ -37,6 +37,7 @@ async function pegaArquivo(caminhoArquivo)
     
 }
 
+export default pegaArquivo;
 /*{-------------------------------------------------------------------------Sincrono
 
 
@@ -63,4 +64,3 @@ async function pegaArquivo(caminhoArquivo)
             })
         }
 }*/
-export default pegaArquivo;
